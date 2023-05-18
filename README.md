@@ -23,9 +23,11 @@ Add the SDK dependency
 Add the SDK dependency to your app module's build.gradle file:
 ``` groovy
 dependencies {
-    implementation 'com.github.offerxp:offerxp-sdk:0.1.1'
+    implementation 'com.github.consights:offerxp-sdk:1.0.0'
 }
-```
+``` 
+Click here to get the latest release version [![](https://jitpack.io/v/consights/offerxp-sdk.svg)](https://jitpack.io/#consights/offerxp-sdk)
+
 Use the Material app theme
 To ensure that your app looks consistent with other Material Design apps, use the Material app theme. Add the following line to your app module's AndroidManifest.xml file, inside the application tag:
 ``` xml
