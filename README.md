@@ -23,7 +23,7 @@ Add the SDK dependency
 Add the SDK dependency to your app module's build.gradle file:
 ``` groovy
 dependencies {
-    implementation 'com.github.consights:offerxp-sdk:1.0.0'
+    implementation 'com.github.consights:offerxp-sdk:1.0.1'
 }
 ``` 
 Click here to get the latest release version [![](https://jitpack.io/v/consights/offerxp-sdk.svg)](https://jitpack.io/#consights/offerxp-sdk)
