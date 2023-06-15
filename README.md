@@ -87,8 +87,14 @@ offerxp.setRequestListener(object : OfferXPRequestListener {
 To set custom settings using the OfferXPSettingsBuilder class, use the following code:
 ``` kotlin
 val settings = OfferXpSettingsBuilder()
-    .setPrimaryBrandColor(Color.RED)
-    .setStatusBarColor(Color.YELLOW)
+    .enableActionBar() // or .enableActionBar(false)
+    .enableDarkMode() // or .enableDarkMode(false)
+    .setActionBarText("My Rewards")
+    .setActionBarColor("#C8C8C8","#323CA") // or .setActionBarColor(Color.WHITE, Color.BLACK)
+    .setPrimaryActionBackgroundColor("#faf9eb","#a8a232") // or .setPrimaryActionBackgroundColor(Color.WHITE, Color.BLACK)
+    .setWindowBackgroundColor("#ffffff","#800000") // or .setWindowBackgroundColor(Color.WHITE, Color.BLACK)
+    .setPopupWindowBackgroundColor("#ffffff","#800000") // or .setPopupWindowBackgroundColor(Color.WHITE, Color.BLACK)
+    .setIconTint("#ffffff","#000000") // or .setIconTint(Color.WHITE, Color.BLACK)
     .build()
 
 offerxp.settings = settings
