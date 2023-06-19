@@ -81,6 +81,10 @@ offerxp.setRequestListener(object : OfferXPRequestListener {
     override fun onError() {
         // Handle API errors if needed
     }
+
+    override fun onSettingsError() {
+        // Handle Settings related errors if needed
+    }
 })
 ```
 ### Setting Custom Settings
