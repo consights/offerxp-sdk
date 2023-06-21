@@ -87,7 +87,7 @@ offerxp.setRequestListener(object : OfferXPRequestListener {
     }
 })
 ```
-### Setting Custom Settings
+### UI Customization Settings
 To set custom settings using the OfferXPSettingsBuilder class, use the following code:
 ``` kotlin
 val settings = OfferXpSettingsBuilder()
