@@ -105,4 +105,10 @@ val settings = OfferXpSettingsBuilder()
 offerxp.settings = settings
 ```
 ### Requesting a Reward Coupon
-To request a reward coupon, you can call the ``` offerxp.requestReward()``` method and pass in the campaign slug and a lambda function that will be called once the reward fetching is complete. The lambda function will receive a CampaignReward object
+To request a reward coupon, you can call the ``` offerxp.requestReward()``` method and pass in the campaign slug and a lambda function that will be called once the reward fetching is complete. The lambda function will receive a CampaignReward object. Then you can call ``` kotlin showCampaignRewardPopup(context,campaignReward) ``` to show a build in popup message. 
+``` kotlin
+OfferXP.getInstance().requestReward("K04HJK20") {
+               OfferXP.getInstance().showCampaignRewardPopup(this,it)
+           }
+           
+```
