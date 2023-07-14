@@ -105,10 +105,38 @@ val settings = OfferXpSettingsBuilder()
 offerxp.settings = settings
 ```
 ### Requesting a Reward Coupon
-To request a reward coupon, you can call the ``` offerxp.requestReward()``` method and pass in the campaign slug and a lambda function that will be called once the reward fetching is complete. The lambda function will receive a CampaignReward object. Then you can call ``` kotlin showCampaignRewardPopup(context,campaignReward) ``` to show a build in popup message. 
+To request a reward coupon, you can call the ``` offerxp.requestReward()``` method and pass in the campaign slug and a lambda function that will be called once the reward fetching is complete. The lambda function will receive a CampaignReward object. Then you can call ``` showCampaignRewardPopup(context,campaignReward) ``` to show a build in popup message. 
 ``` kotlin
-OfferXP.getInstance().requestReward("K04HJK20") {
-               OfferXP.getInstance().showCampaignRewardPopup(this,it)
+OfferXP.getInstance().requestReward("K04HJK20") {reward->
+               OfferXP.getInstance().showCampaignRewardPopup(this,reward)
            }
            
 ```
+To retrieve a list of all active campaigns and access their details in the Android SDK, you can use the following code snippet:
+``` kotlin
+/**
+ * Retrieve a list of all active campaigns.
+ */
+OfferXP.getInstance().getAllActiveCampaigns { campaigns ->
+    // Handle successful retrieval of active campaigns
+    for (campaign in campaigns.campaigns) {
+        // Access campaign details
+        val slug = campaign.slug
+        // Process other campaign details as needed
+    }
+}
+```
+In this code, the ```getAllActiveCampaigns()``` method is called on the ```OfferXP``` instance, and a lambda function is passed as the parameter. The lambda function takes a single argument ```campaigns```, which represents the response object containing the list of active campaigns.
+Inside the lambda function, you can access the ```campaigns``` field and iterate over the campaigns list. The campaign slug is retrieved using ```campaign.slug```. You can add additional code to process other campaign details according to your requirements.
+### Quick Reward
+To quickly retrieve a random reward from any of your active campaigns without diving into the implementation details of specific campaigns, you can use the following Kotlin code snippet:
+``` kotlin
+/**
+ * Request a random reward from any active campaign.
+ */
+OfferXP.getInstance().requestRandomReward { reward ->
+    OfferXP.getInstance().showCampaignRewardPopup(this, reward)
+}
+```
+In the code snippet above, the ```requestRandomReward()``` method is called on the ```OfferXP``` instance. It takes a lambda function as a parameter, which receives the reward object as its argument.
+Inside the lambda function, you can handle the ```reward``` as needed. In this example, the ```showCampaignRewardPopup()``` method is called on the ```OfferXP``` instance to display a reward popup. The ```this``` parameter represents the context or activity where the popup should be displayed, and reward is the retrieved random reward from any active campaign.
