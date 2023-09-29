@@ -3,8 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.consights</groupId>
     <artifactId>offerxp-sdk</artifactId>
-    <version>1.0.2</version>
-    <packaging>aar</packaging>
+    <version>1.0.3</version>
     <dependencies>
         <dependency>
             <groupId>androidx.databinding</groupId>
