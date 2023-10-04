@@ -23,7 +23,7 @@ Add the SDK dependency
 Add the SDK dependency to your app module's build.gradle file:
 ``` groovy
 dependencies {
-    implementation 'com.github.consights:offerxp-sdk:1.0.1'
+    implementation 'com.github.consights:offerxp-sdk:1.0.4@aar'
 }
 ``` 
 Click here to get the latest release version [![](https://jitpack.io/v/consights/offerxp-sdk.svg)](https://jitpack.io/#consights/offerxp-sdk)
@@ -140,3 +140,48 @@ OfferXP.getInstance().requestRandomReward { reward ->
 ```
 In the code snippet above, the ```requestRandomReward()``` method is called on the ```OfferXP``` instance. It takes a lambda function as a parameter, which receives the reward object as its argument.
 Inside the lambda function, you can handle the ```reward``` as needed. In this example, the ```showCampaignRewardPopup()``` method is called on the ```OfferXP``` instance to display a reward popup. The ```this``` parameter represents the context or activity where the popup should be displayed, and reward is the retrieved random reward from any active campaign.
+### Displaying User Rewards
+To showcase a user's rewards within your app, simply call the following method:
+```kotlin
+OfferXP.getInstance().launchRewardsActivity(this)
+```
+Where 'this' represents an activity context. This function launches the built-in screen designed to display user rewards. It automatically fetches and presents all user rewards upon activation. Should you encounter any API errors during this process, you can monitor and handle them through the respective methods of the requestListener that you've configured with the OfferXP instance.
+This feature provides a seamless way to engage users and showcase their earned rewards within your application.
+## Workarounds to handling the Crashes Due to non-Material theme in your app
+In some cases, your app may not use a Material theme or its descendant, leading to potential crashes when utilizing functions like `showCampaignRewardPopup()` or `launchRewardsActivity()`. To resolve this issue, consider the following workarounds:
+### Setting the Reward Activity Theme
+To ensure the `RewardsActivity` utilizes a Material theme without affecting the rest of your app's theme, follow these steps:
+Add the Material theme dependency to your `build.gradle` file:
+```gradle
+implementation 'com.google.android.material:material:1.9.0'
+```
+In your AndroidManifest.xml file, specify the Material theme for the RewardsActivity as follows:
+```xml
+<activity
+    android:name="com.offerxp.reward.offerxp_sdk.core.ui.RewardsActivity"
+    android:label="My Rewards"
+    android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
+```
+This configuration applies the Theme.MaterialComponents.Light.NoActionBar theme specifically to the RewardsActivity, allowing it to function smoothly without affecting your app's overall theme.
+### Handling showCampaignRewardPopup() Crashes
+If you experience crashes with showCampaignRewardPopup(), it may be due to passing a non-Material theme activity context to the method. To resolve this, create a new context wrapper with the Material theme:
+```kotlin
+import android.content.ContextWrapper;
+import android.view.ContextThemeWrapper;
+
+// Obtain your original context
+Context originalContext = this; // Replace 'this' with your current context
+
+// Define the Material theme you want to use
+int materialThemeResId = R.style.Theme.MaterialComponents;
+
+// Create a ContextThemeWrapper with the Material theme
+Context materialContext = new ContextThemeWrapper(originalContext, materialThemeResId);
+
+// Use 'materialContext' when calling the method
+OfferXP.getInstance().showCampaignRewardPopup(materialContext, reward);
+```
+In the provided code, we first obtain the original context (replace 'this' with your current context). Then, we create a ContextThemeWrapper with the desired Material theme resource ID (R.style.Theme.MaterialComponents). Finally, you can safely use materialContext when calling the showCampaignRewardPopup() method.
+By following these workarounds, you can ensure that the context passed to showCampaignRewardPopup() uses the Material theme, even if your app's overall theme is not a descendant of the Material theme.
+   
+
