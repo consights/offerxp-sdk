@@ -166,20 +166,20 @@ This configuration applies the Theme.MaterialComponents.Light.NoActionBar theme 
 ### Handling showCampaignRewardPopup() Crashes
 If you experience crashes with showCampaignRewardPopup(), it may be due to passing a non-Material theme activity context to the method. To resolve this, create a new context wrapper with the Material theme:
 ```kotlin
-import android.content.ContextWrapper;
-import android.view.ContextThemeWrapper;
+import android.content.ContextWrapper
+import android.view.ContextThemeWrapper
 
 // Obtain your original context
-Context originalContext = this; // Replace 'this' with your current context
+val originalContext = this // Replace 'this' with your current context
 
 // Define the Material theme you want to use
-int materialThemeResId = R.style.Theme.MaterialComponents;
+val materialThemeResId = R.style.Theme.MaterialComponents
 
 // Create a ContextThemeWrapper with the Material theme
-Context materialContext = new ContextThemeWrapper(originalContext, materialThemeResId);
+val materialContext = ContextThemeWrapper(originalContext, materialThemeResId)
 
 // Use 'materialContext' when calling the method
-OfferXP.getInstance().showCampaignRewardPopup(materialContext, reward);
+OfferXP.getInstance().showCampaignRewardPopup(materialContext, reward)
 ```
 In the provided code, we first obtain the original context (replace 'this' with your current context). Then, we create a ContextThemeWrapper with the desired Material theme resource ID (R.style.Theme.MaterialComponents). Finally, you can safely use materialContext when calling the showCampaignRewardPopup() method.
 By following these workarounds, you can ensure that the context passed to showCampaignRewardPopup() uses the Material theme, even if your app's overall theme is not a descendant of the Material theme.
