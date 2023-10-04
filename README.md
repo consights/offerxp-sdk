@@ -183,5 +183,3 @@ OfferXP.getInstance().showCampaignRewardPopup(materialContext, reward);
 ```
 In the provided code, we first obtain the original context (replace 'this' with your current context). Then, we create a ContextThemeWrapper with the desired Material theme resource ID (R.style.Theme.MaterialComponents). Finally, you can safely use materialContext when calling the showCampaignRewardPopup() method.
 By following these workarounds, you can ensure that the context passed to showCampaignRewardPopup() uses the Material theme, even if your app's overall theme is not a descendant of the Material theme.
-   
-
