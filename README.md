@@ -10,15 +10,15 @@ Before proceeding with the installation, make sure that you have the following p
 * Gradle version: 7.3.3 or higher
 ## Installation
 ### Add the JitPack repository
-Add the JitPack repository to your project's build.gradle file:
-arduino
-Copy code
+Add the JitPack repository to your project's build.gradle file
+```groovy
 allprojects {
     repositories {
         // other repositories
         maven { url "https://jitpack.io" }
     }
 }
+```
 Add the SDK dependency
 Add the SDK dependency to your app module's build.gradle file:
 ``` groovy
