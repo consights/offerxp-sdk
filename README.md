@@ -19,6 +19,17 @@ allprojects {
     }
 }
 ```
+Add the JitPack repository to your ```settings.gradle``` ```dependencyResolutionManagement``` instead of ```build.gradle``` if you are using gradle build tools 7.x.x or heigher as shown below
+```groovey
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+}
+```
 Add the SDK dependency
 Add the SDK dependency to your app module's build.gradle file:
 ``` groovy
