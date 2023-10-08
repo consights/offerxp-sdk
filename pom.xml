@@ -4,6 +4,7 @@
     <groupId>com.github.consights</groupId>
     <artifactId>offerxp-sdk</artifactId>
     <version>1.0.6</version>
+    <packaging>aar</packaging>
     <dependencies>
         <dependency>
             <groupId>androidx.databinding</groupId>
