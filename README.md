@@ -33,11 +33,13 @@ dependencyResolutionManagement {
 Add the SDK dependency
 Add the SDK dependency to your app module's build.gradle file:
 ``` groovy
-dependencies {
-    implementation 'com.github.consights:offerxp-sdk:1.0.4@aar'
+implementation('com.github.consights:offerxp-sdk:1.0.10@aar') {
+    transitive = true
 }
 ``` 
 Click here to get the latest release version [![](https://jitpack.io/v/consights/offerxp-sdk.svg)](https://jitpack.io/#consights/offerxp-sdk)
+
+Setting `transitive = true` is essential because it ensures that all the dependencies required by the SDK are automatically included in your project. This simplifies dependency management, reduces compatibility issues, and guarantees that the SDK functions correctly.
 
 Use the Material app theme
 To ensure that your app looks consistent with other Material Design apps, use the Material app theme. Add the following line to your app module's AndroidManifest.xml file, inside the application tag:
@@ -57,6 +59,7 @@ If you encounter any issues with the SDK integration, please check the following
 * Make sure that your Gradle version is at least 7.3.3.
 * Make sure that you have added the JitPack repository to your project's build.gradle file.
 * Make sure that you have added the SDK dependency to your app module's build.gradle file.
+* If you encounter problems like missing classes, packages, or other build errors, double-check that you've included `transitive = true` in your SDK dependency. This ensures that all necessary components are pulled into your project, potentially resolving such issues."
 ## SDK Initialization and Error Handling
 ### Creating a singleton instance
 To create a singleton instance of the OfferXP class, use the following code:
