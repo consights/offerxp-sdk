@@ -61,11 +61,18 @@ If you encounter any issues with the SDK integration, please check the following
 * Make sure that you have added the SDK dependency to your app module's build.gradle file.
 * If you encounter problems like missing classes, packages, or other build errors, double-check that you've included `transitive = true` in your SDK dependency. This ensures that all necessary components are pulled into your project, potentially resolving such issues."
 ## SDK Initialization and Error Handling
-### Creating a singleton instance
-To create a singleton instance of the OfferXP class, use the following code:
-``` kotlin
-val offerxp = OfferXP.instance
+Initialization of the SDK is a necessary first step. Attempting to obtain an instance of the SDK before it has been initialized may lead to a crash. To prevent such situations, please ensure that you have correctly initialized the SDK. In many cases, you can accomplish this by initializing the SDK within the Application class itself.
+### Initialize the sdk
+Use the following code to initilize the sdk
+```kotlin
+OfferXP.initialize(context)
 ```
+### Creating a singleton instance
+To get a singleton instance of the OfferXP class, use the following code:
+``` kotlin
+val offerxp = OfferXP.getInstance()
+```
+Note: Calling this method before initialization may result in a crash.
 ### Checking Authentication
 To check if the OfferXP instance is already authenticated, use the following code:
 ``` kotlin
