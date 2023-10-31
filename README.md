@@ -33,7 +33,7 @@ dependencyResolutionManagement {
 Add the SDK dependency
 Add the SDK dependency to your app module's build.gradle file:
 ``` groovy
-implementation('com.github.consights:offerxp-sdk:1.0.10@aar') {
+implementation('com.github.consights:offerxp-sdk:1.0.11@aar') {
     transitive = true
 }
 ``` 
