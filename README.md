@@ -82,6 +82,7 @@ if (offerxp.isAuthenticated()) {
     // Token is not present in the device
 }
 ```
+If the check fails, you need to call the `setTokens()` method as shown below. If you attempt to use the following methods without setting the token: `getAllActiveCampaigns()`, `launchRewardsActivity()`, `requestReward()`, `requestRandomReward()`, your app will crash, and an error message will be raised: "No token has been set. Did you forget to set the authentication tokens using the setTokens() method?" To prevent this situation, please ensure that you have authenticated the SDK correctly.
 ### Setting Tokens
 If the authentication check returns false, set the token using the following code:
 ``` kotlin
