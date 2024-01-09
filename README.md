@@ -100,15 +100,29 @@ offerxp.setRequestListener(object : OfferXPRequestListener {
         // Handle API success cases if needed
     }
 
-    override fun onError() {
+    override fun onError(message:String) {
         // Handle API errors if needed
     }
 
-    override fun onSettingsError() {
+    override fun onSettingsError(message:String) {
         // Handle Settings related errors if needed
     }
 })
 ```
+### Token Generation
+
+To generate authentication tokens, utilize the provided API_key and secret within your backend system.
+
+The tokens generated will be unique to each user. Upon receiving the response, store the User UUID at your backend in a manner that facilitates retrieval for future use. Notably, you can generate a new set of tokens for a specific user by providing their user UUID.
+
+When making API requests:
+- If the user_uuid is omitted, OfferXP will create a new user, providing a new user_uuid along with the token.
+- For existing users in your app, include the user_uuid in the request.
+
+Follow these guidelines to manage authentication tokens and user data effectively within your application. Refer to this [Swagger documentation](https://app.swaggerhub.com/apis-docs/RIJO/OfferXP-SDK-Token-API/1.0.0#/default/) for detailed instructions on token generation and user UUID management.v
+
+**Important Security Note:**
+Under no circumstances should authentication tokens be generated within your Frontend Android application. Doing so can pose significant security risks. Always perform token generation exclusively within your backend systems to ensure the protection of sensitive data and prevent potential vulnerabilities. This practice mitigates security threats and safeguards user information from unauthorized access or exploitation.
 ### UI Customization Settings
 To set custom settings using the OfferXPSettingsBuilder class, use the following code:
 ``` kotlin
